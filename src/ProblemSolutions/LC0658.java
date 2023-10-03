@@ -3,6 +3,10 @@ package ProblemSolutions;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  leetcode problem #658
+ *  finished in 24:02
+ */
 public class LC0658 {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int left = 0;

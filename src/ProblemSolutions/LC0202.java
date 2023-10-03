@@ -1,9 +1,12 @@
-import java.util.*;
+package ProblemSolutions;
+
+import java.util.HashSet;
 
 /**
- * space for putting solutions
+ * leetcode problem #0202
+ * finished in 3:48
  */
-class Solution {
+public class LC0202 {
     public boolean isHappy(int n) {
         if (n == 1) return true;
         HashSet<Integer> seen = new HashSet<>();
