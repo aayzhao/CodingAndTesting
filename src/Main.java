@@ -6,7 +6,7 @@ public class Main {
         Solution solution = new Solution();
 
 
-        System.out.println(solution.maxProfit(new int[] {3,3,5,0,0,3,1,4}));
+        System.out.println(solution.maxProfit(2, new int[] {3,2,6,5,0,3}));
 //        System.out.println(solution.winnerOfGame("AA"));
 //        System.out.println(solution.winnerOfGame("ABBBBBBBAAA"));
 //        System.out.println(solution.winnerOfGame("AAAABBBB"));

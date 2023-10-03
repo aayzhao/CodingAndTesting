@@ -4,6 +4,34 @@ import java.util.*;
  * space for putting solutions
  */
 class Solution {
+    public int maxProfit(int k, int[] prices) {
+        int[][] dp = new int[k][prices.length];
+        dp[k - 1][0] = 0;
+        int min = prices[0];
+
+        for (int j = 1, i = k - 1; j < prices.length; j++) {
+            if (prices[i] < min) {
+                min = prices[j];
+                dp[i] = dp[i - 1];
+            } else {
+                dp[i][j] = Math.max(dp[i][j - 1], prices[j] - min);
+            }
+        }
+
+        for (int i = k - 2; i >= 0; i--) {
+            int max = prices[prices.length - 1];
+            dp[k][prices.length - 1] = dp[k + 1][prices.length - 1];
+            for (int j = prices.length - 2; j > 0; j--) {
+                if (prices[i] > max) {
+
+                } else {
+                    dp[k][j] =  Math.max(dp[k][j + 1], max - prices[j] + dp[k][j]);
+                }
+            }
+        }
+
+        return 0;
+    }
     public int maxProfit(int[] prices) {
         int[] dp = new int[prices.length];
         int profit = Integer.MIN_VALUE;
