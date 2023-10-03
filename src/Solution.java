@@ -1,5 +1,5 @@
-public class Solution {
-    public static void printHW() {
-        System.out.println("Hello, world!");
-    }
+import java.util.*;
+
+class Solution {
+
 }
