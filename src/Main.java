@@ -5,6 +5,8 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
+
+
 //        System.out.println(solution.winnerOfGame("AA"));
 //        System.out.println(solution.winnerOfGame("ABBBBBBBAAA"));
 //        System.out.println(solution.winnerOfGame("AAAABBBB"));
