@@ -4,7 +4,7 @@ import java.util.*;
  * space for putting solutions
  */
 class Solution {
-    public boolean isHappy(int n) {
+    public boolean isHappy(int n) { // leetcode #0202
         if (n == 1) return true;
         HashSet<Integer> seen = new HashSet<>();
         int x = n;
