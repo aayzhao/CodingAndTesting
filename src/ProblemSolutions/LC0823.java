@@ -1,9 +1,15 @@
-import java.util.*;
+package ProblemSolutions;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * space for putting solutions
+ * leetcode problem #823
+ * finished in 26:13
  */
-class Solution {
+public class LC0823 {
+    // best solution
     private static final int MOD_VAL = 1_000_000_007;
     public int numFactoredBinaryTrees(int[] arr) {
         if (arr.length == 1) return arr.length;
