@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.regex.*;
  */
 public class InputParser {
     static final String testcasePath = "src/testcases.txt";
+    static boolean debug = false;
 
     /**
      * Parses testcase file for the given test case number.
@@ -22,9 +24,9 @@ public class InputParser {
         Scanner scan = new Scanner(System.in);
         try {
             File testcases = new File(testcasePath);
-            System.err.println(testcases.getAbsolutePath());
+            if (debug) System.err.println(testcases.getAbsolutePath());
             scan = new Scanner(testcases);
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         String line = "-1";
@@ -32,8 +34,8 @@ public class InputParser {
         while (scan.hasNextLine()) {
             line = scan.nextLine();
             Matcher matcher = Pattern.compile("\\d+").matcher(line);
-            if (!matcher.find()) throw new IOException("No line number");
-            if (Integer.parseInt(matcher.group()) == caseNum) break;
+            if (!matcher.find()) continue;
+            else if (Integer.parseInt(matcher.group()) == caseNum) break;
         }
         scan.close();
         if (caseNum != line.charAt(0) - '0') throw new IOException("Case Number Not Found");
@@ -43,12 +45,13 @@ public class InputParser {
         while (matcher.find()) {
             arr.add(Integer.parseInt(matcher.group()));
         }
-        int[] a = new int[arr.size()];
-        for (int i = 0; i < arr.size(); i++) {
-            a[i] = arr.get(i);
+        int[] a = new int[arr.size() - 1];
+        for (int i = 1; i < arr.size(); i++) {
+            a[i - 1] = arr.get(i);
         }
         return a;
     }
+
     //TODO: implement parse2DCharArr()
     public static char[][] parse2DCharArr() {
         return new char[1][1];
