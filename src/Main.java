@@ -9,8 +9,12 @@ public class Main {
         Solution solution = new Solution();
 
         for (int testNum = 1; testNum <= testcaseCount; testNum++) {
-            int[] testcase = InputParser.parse1DIntArr(testNum);
+            int[] testcase = InputParser.parse1DIntArr(testNum, 1);
             System.out.println(solution.numFactoredBinaryTrees(testcase));
+        }
+
+        for (int testNum = 1; testNum <= testcaseCount; testNum++) {
+            System.out.println(InputParser.parseNum(testNum, 0));
         }
     }
 }
