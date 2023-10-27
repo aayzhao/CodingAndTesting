@@ -29,7 +29,6 @@ public class InputParser {
             if (debug) System.err.println(testcases.getAbsolutePath());
             scan = new Scanner(testcases);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
             throw new TestcaseReadException("Failed To Find Testcase File", e, caseNum);
         }
         String line = "-1";
