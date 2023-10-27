@@ -4,30 +4,14 @@ import java.util.*;
  * space for putting solutions
  */
 class Solution {
-    private static final int MOD_VAL = 1_000_000_007;
-    public int numFactoredBinaryTrees(int[] arr) {
-        if (arr.length == 1) return arr.length;
-        int N = arr.length;
-        Arrays.sort(arr);
-        long[] dp = new long[N];
-        Arrays.fill(dp, 1);
 
-        Map<Integer, Integer> index = new HashMap<>();
-        for (int i = 0; i < N; ++i)
-            index.put(arr[i], i);
-
-        for (int i = 0; i < N; ++i)
-            for (int j = 0; j < i; ++j) {
-                if (arr[i] % arr[j] == 0) { // A[j] is left child
-                    int right = arr[i] / arr[j];
-                    if (index.containsKey(right)) {
-                        dp[i] = (dp[i] + dp[j] * dp[index.get(right)]) % MOD_VAL;
-                    }
-                }
-            }
-
-        long ans = 0;
-        for (long x: dp) ans += x;
-        return (int) (ans % MOD_VAL);
-    }
 }
+/*
+scratch work:
+2 - 1
+3 - 2
+4 - 4
+5 - 6 (2, 3)
+6 - 9
+7 - 12
+ */
