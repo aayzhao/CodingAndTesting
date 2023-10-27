@@ -23,7 +23,7 @@ public class InputParser {
      */
     public static int[] parse1DIntArr(int caseNum, int offset) throws TestcaseReadException {
         ArrayList<Integer> arr = new ArrayList<>();
-        Scanner scan = new Scanner(System.in);
+        Scanner scan;
         try {
             File testcases = new File(testcasePath);
             if (debug) System.err.println(testcases.getAbsolutePath());
@@ -62,8 +62,7 @@ public class InputParser {
      */
     public static int parseNum(int caseNum, int offset) throws TestcaseReadException {
         offset++;
-        ArrayList<Integer> arr = new ArrayList<>();
-        Scanner scan = new Scanner(System.in);
+        Scanner scan;
         try {
             File testcases = new File(testcasePath);
             if (debug) System.err.println(testcases.getAbsolutePath());
