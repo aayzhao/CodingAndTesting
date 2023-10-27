@@ -1,4 +1,4 @@
-package ProblemSolutions;
+package problemsolutions;
 
 public class HelloWorld {
     public static void printHW() {

@@ -1,4 +1,4 @@
-package ProblemSolutions;
+package problemsolutions;
 
 /**
  * leetcode problem #137

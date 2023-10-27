@@ -1,5 +1,6 @@
+package testcaseio;
+
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,11 +16,12 @@ public class InputParser {
 
     /**
      * Parses testcase file for the given test case number.
-     * @param caseNum case number in file to be parsed
+     * @param caseNum   case number in file to be parsed
+     * @param offset    which "column" to parse each line from
      * @return returns an array of int values
-     * @throws IOException file was unable to be read
+     * @throws TestcaseReadException file was unable to be read properly, or is malformed
      */
-    public static int[] parse1DIntArr(int caseNum, int offset) throws IOException {
+    public static int[] parse1DIntArr(int caseNum, int offset) throws TestcaseReadException {
         ArrayList<Integer> arr = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
         try {
@@ -28,6 +30,7 @@ public class InputParser {
             scan = new Scanner(testcases);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            throw new TestcaseReadException("Failed To Find Testcase File", e, caseNum);
         }
         String line = "-1";
 
@@ -39,7 +42,7 @@ public class InputParser {
         scan.close();
         Matcher matcher = Pattern.compile("\\d+").matcher(line);
 
-        if (!matcher.find() || caseNum != Integer.parseInt(matcher.group())) throw new IOException("Case Number Not Found");
+        if (!matcher.find() || caseNum != Integer.parseInt(matcher.group())) throw new TestcaseReadException("Case Number Not Found", caseNum);
 
         while (matcher.find()) {
             arr.add(Integer.parseInt(matcher.group()));
@@ -51,7 +54,14 @@ public class InputParser {
         return a;
     }
 
-    public static int parseNum(int caseNum, int offset) throws IOException {
+    /**
+     * Parses testcase file for a single int per line of testcase input
+     * @param caseNum   which testcase to parse file for
+     * @param offset    which "column" of input to parse
+     * @return int for the testcase
+     * @throws TestcaseReadException thrown if failed to read file, or file is malformed
+     */
+    public static int parseNum(int caseNum, int offset) throws TestcaseReadException {
         offset++;
         ArrayList<Integer> arr = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
@@ -61,6 +71,7 @@ public class InputParser {
             scan = new Scanner(testcases);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            throw new TestcaseReadException("Failed To Find Testcase File", e, caseNum);
         }
         String line = "-1";
 
@@ -71,9 +82,9 @@ public class InputParser {
         }
         scan.close();
         Matcher matcher = Pattern.compile("\\d+").matcher(line);
-        if (!matcher.find() || caseNum != Integer.parseInt(matcher.group())) throw new IOException("Case Number Not Found");
+        if (!matcher.find() || caseNum != Integer.parseInt(matcher.group())) throw new TestcaseReadException("Case Number Not Found", caseNum);
         for (int i = 0; i < offset; i++) {
-            if (!matcher.find()) throw new IOException("Case Missing After Number And Offset");
+            if (!matcher.find()) throw new TestcaseReadException("Case Missing After Number And Offset", caseNum);
         }
         return Integer.parseInt(matcher.group());
     }
